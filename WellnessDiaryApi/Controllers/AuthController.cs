@@ -57,7 +57,8 @@ namespace WellnessDiaryApi.Controllers
                 Password = request.Password, // Set the Password property
                 PasswordHash = Convert.ToBase64String(passwordHash),
                 PasswordSalt = Convert.ToBase64String(passwordSalt),
-                RegistrationDate = DateTime.Now
+                RegistrationDate = DateTime.Now,
+                Role = "user",
             };
 
             // Save user to database
@@ -201,6 +202,7 @@ namespace WellnessDiaryApi.Controllers
                 new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
                 new Claim(ClaimTypes.Name, user.Username),
                 new(JwtRegisteredClaimNames.Name, user.Username),
+                new("userId", value:user.UserId.ToString()),
                 new("role", value: user.Role)
             };
 
