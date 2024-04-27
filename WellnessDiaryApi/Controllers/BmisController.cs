@@ -251,6 +251,7 @@ namespace WellnessDiaryApi.Controllers
                 // Create an object containing BMI record properties along with the category and message
                 var bmiWithCategory = new
                 {
+                    ReadingId = bmiRecord.ReadingId,
                     UserId = bmiRecord.UserId,
                     WeightInKg = bmiRecord.Weight,
                     HeightInCm = bmiRecord.Height,
